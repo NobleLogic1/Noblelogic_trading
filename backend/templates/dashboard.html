@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Test Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .status-panel {
+            background: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .metric {
+            background: #333;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .metric-label {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        .metric-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .countdown {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #333;
+            border-radius: 4px;
+            margin-top: 20px;
+            color: #2196F3;
+        }
+        .suggestions {
+            margin-top: 20px;
+        }
+        .suggestion {
+            background: #333;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            border-left: 4px solid;
+        }
+        .suggestion.HIGH {
+            border-color: #f44336;
+        }
+        .suggestion.MEDIUM {
+            border-color: #ff9800;
+        }
+        .suggestion.LOW {
+            border-color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>NobleLogic Trading - Test Monitor</h1>
+        <div class="status-panel">
+            <h2>Current Status</h2>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">Balance</div>
+                    <div class="metric-value" id="balance">$0.00</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Win Rate</div>
+                    <div class="metric-value" id="winRate">0%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Total Trades</div>
+                    <div class="metric-value" id="totalTrades">0</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Active Positions</div>
+                    <div class="metric-value" id="activePositions">0</div>
+                </div>
+            </div>
+            <div class="countdown" id="countdown"></div>
+        </div>
+        <div class="suggestions" id="suggestions"></div>
+    </div>
+
+    <script>
+        function updateStatus() {
+            fetch('/api/test/status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('balance').textContent = `$${data.balance.toFixed(2)}`;
+                    document.getElementById('winRate').textContent = `${(data.metrics.win_rate * 100).toFixed(1)}%`;
+                    document.getElementById('totalTrades').textContent = data.metrics.total_trades;
+                    document.getElementById('activePositions').textContent = data.active_positions;
+
+                    // Update countdown
+                    const timeLeft = Math.max(0, 600 - data.elapsed_time);
+                    if (timeLeft > 0) {
+                        const minutes = Math.floor(timeLeft / 60);
+                        const seconds = Math.floor(timeLeft % 60);
+                        document.getElementById('countdown').textContent = 
+                            `Performance Report in: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    } else {
+                        updatePerformance();
+                    }
+                });
+        }
+
+        function updatePerformance() {
+            fetch('/api/test/performance')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.improvement_suggestions) {
+                        const suggestionsHtml = data.improvement_suggestions
+                            .map(suggestion => `
+                                <div class="suggestion ${suggestion.priority}">
+                                    <strong>${suggestion.category}</strong>
+                                    <p>${suggestion.suggestion}</p>
+                                </div>
+                            `)
+                            .join('');
+                        document.getElementById('suggestions').innerHTML = `
+                            <h2>Performance Analysis</h2>
+                            ${suggestionsHtml}
+                        `;
+                    }
+                });
+        }
+
+        // Update status every second
+        setInterval(updateStatus, 1000);
+        updateStatus();
+    </script>
+</body>
+</html>

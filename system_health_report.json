@@ -1,0 +1,40 @@
+{
+  "analysis_timestamp": "2025-09-24T14:47:54.877774",
+  "overall_health_score": 0.99,
+  "health_status": "Excellent",
+  "total_tests": 40,
+  "passed_tests": 40,
+  "failed_tests": 0,
+  "component_health": {
+    "ProgressiveExposure": {
+      "tests_run": 10,
+      "tests_passed": 10,
+      "health_score": 1.0,
+      "status": "Healthy"
+    },
+    "RiskAssessment": {
+      "tests_run": 11,
+      "tests_passed": 11,
+      "health_score": 1.0,
+      "status": "Healthy"
+    },
+    "MLIntegration": {
+      "tests_run": 11,
+      "tests_passed": 11,
+      "health_score": 1.0,
+      "status": "Healthy"
+    },
+    "SystemIntegration": {
+      "tests_run": 8,
+      "tests_passed": 8,
+      "health_score": 0.95,
+      "status": "Healthy"
+    }
+  },
+  "error_categories": {},
+  "recommendations": [
+    "Maintain current standards",
+    "Consider advanced features"
+  ],
+  "next_validation_suggested": "2025-10-01T14:47:54.877779"
+}

@@ -1,0 +1,16 @@
+{
+  "analysis_timestamp": "2025-09-24T14:47:54.876157",
+  "performance_tests_count": 2,
+  "average_execution_time": 0.0015835762023925781,
+  "slowest_test": {
+    "component": "ProgressiveExposure",
+    "test_name": "performance_metrics_calculation",
+    "execution_time": 0.0031299591064453125
+  },
+  "fastest_test": {
+    "component": "SystemIntegration",
+    "test_name": "performance_under_load",
+    "execution_time": 3.719329833984375e-05
+  },
+  "performance_score": 0.9998416423797607
+}

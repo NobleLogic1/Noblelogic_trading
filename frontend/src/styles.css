@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0b1c2c;
+  color: #e0f0ff;
+}
+
+.dashboard {
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  color: #6ec1e4;
+}
+
+.main-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 20px;
+}
+
+.panel {
+  background-color: #122b45;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+button {
+  background-color: #1f3b5c;
+  color: #6ec1e4;
+  border: none;
+  padding: 8px 12px;
+  margin: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2a4c6f;
+}
+
+.status-open { color: #6ec1e4; }
+.status-pending { color: #999; }
+.status-closed { color: #ccc; }
+
+.pnl-positive { color: #00ff99; font-weight: bold; }
+.pnl-negative { color: #ff4d4d; font-weight: bold; }
+
+.signal-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+  animation: pulse 1.5s infinite;
+}
+
+.signal-blue { background-color: #6ec1e4; }
+.signal-yellow { background-color: #ffd700; }
+.signal-green { background-color: #00ff99; }
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@binance/connector": "^3.0.0-rc.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^5.1.0",
+    "technicalindicators": "^3.1.0",
+    "ws": "^8.16.0"
+  }
+}

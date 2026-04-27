@@ -1,0 +1,96 @@
+.test-mode-monitor {
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    color: #fff;
+}
+
+.status-panel {
+    background: #2a2a2a;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.metric {
+    background: #333;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.metric label {
+    color: #888;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.metric value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.report-countdown {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 10px;
+    background: #333;
+    border-radius: 4px;
+    margin-top: 20px;
+    color: #2196F3;
+}
+
+.performance-report {
+    margin-top: 20px;
+    padding: 15px;
+    background: #333;
+    border-radius: 4px;
+}
+
+.suggestions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.suggestion {
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 4px solid;
+}
+
+.suggestion.high {
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+}
+
+.suggestion.medium {
+    border-color: #ff9800;
+    background: rgba(255, 152, 0, 0.1);
+}
+
+.suggestion.low {
+    border-color: #4caf50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.suggestion strong {
+    color: #2196F3;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.suggestion p {
+    margin: 0;
+    color: #ddd;
+}

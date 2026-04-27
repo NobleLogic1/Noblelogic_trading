@@ -1,0 +1,128 @@
+ÿþimport requests"""
+
+import hmacMinimal Binance.US API Integration for NobleLogic Trading System
+
+import hashlib"""
+
+import time
+
+import jsonimport requests
+
+from requests.adapters import HTTPAdapter, Retry
+
+class BinanceUSAPI:import hmac
+
+    def __init__(self, api_key, api_secret):import hashlib
+
+        self.api_key = api_keyimport time
+
+        self.api_secret = api_secretimport random
+
+        self.base_url = "https://api.binance.us"from urllib.parse import urlencode
+
+import json
+
+    def _sign(self, params):import os
+
+        query_string = "&".join([f"{k}={v}" for k, v in params.items()])
+
+        signature = hmac.new(self.api_secret.encode(), query_string.encode(), hashlib.sha256).hexdigest()class BinanceUSAPI:
+
+        params['signature'] = signature    def __init__(self):
+
+        return params        self.api_key = None
+
+        self.secret_key = None
+
+    def get_account_balance(self):        self.demo_mode = True
+
+        endpoint = "/api/v3/account"        self.base_url = "https://api.binance.us/api/v3"
+
+        timestamp = int(time.time() * 1000)        
+
+        params = {        # Try to load API keys
+
+            "timestamp": timestamp        self._load_api_keys()
+
+        }        
+
+        params = self._sign(params)    def _load_api_keys(self):
+
+        headers = {        """Load API keys from config/secure/APIkeys.txt"""
+
+            "X-MBX-APIKEY": self.api_key        try:
+
+        }            api_keys_path = os.path.join(os.path.dirname(__file__), "..", "config", "secure", "APIkeys.txt")
+
+        url = self.base_url + endpoint            if os.path.exists(api_keys_path):
+
+        response = requests.get(url, headers=headers, params=params)                with open(api_keys_path, "r") as f:
+
+        if response.status_code == 200:                    content = f.read()
+
+            return response.json()                
+
+        else:                lines = content.strip().split("\n")
+
+            return {"error": response.text}                for line in lines:
+
+                    if "Secret Key:" in line:
+
+    def get_recent_trades(self, symbol="BTCUSDT"):                        self.secret_key = lines[lines.index(line) + 1].strip()
+
+        endpoint = f"/api/v3/myTrades"                    elif "API Key:" in line:
+
+        timestamp = int(time.time() * 1000)                        self.api_key = lines[lines.index(line) + 1].strip()
+
+        params = {                
+
+            "symbol": symbol,                if self.api_key and self.secret_key:
+
+            "timestamp": timestamp                    self.demo_mode = False
+
+        }                    print("API Keys loaded successfully - LIVE TRADING ENABLED")
+
+        params = self._sign(params)                else:
+
+        headers = {                    self.demo_mode = True
+
+            "X-MBX-APIKEY": self.api_key                    print("API keys not found - running in demo mode")
+
+        }            else:
+
+        url = self.base_url + endpoint                self.demo_mode = True
+
+        response = requests.get(url, headers=headers, params=params)                print("API keys file not found - running in demo mode")
+
+        if response.status_code == 200:        except Exception as e:
+
+            return response.json()            self.demo_mode = True
+
+        else:            print(f"Error loading API keys: {e} - running in demo mode")
+
+            return {"error": response.text}    
+
+    def get_account_balance(self):
+        """Get account balance - returns demo data if in demo mode"""
+        if self.demo_mode:
+            return {
+                "BTC": {"free": "0.00100000", "locked": "0.00000000"},
+                "USDT": {"free": "1000.00000000", "locked": "0.00000000"},
+                "ETH": {"free": "0.05000000", "locked": "0.00000000"}
+            }
+        # Live implementation would go here
+        return {}
+    
+    def get_recent_trades(self):
+        """Get recent trades - returns demo data if in demo mode"""
+        if self.demo_mode:
+            return [
+                {
+                    "symbol": "BTCUSDT",
+                    "price": "65420.50",
+                    "qty": "0.00010000",
+                    "time": int(time.time() * 1000),
+                    "isBuyer": True
+                }
+            ]
+        return []

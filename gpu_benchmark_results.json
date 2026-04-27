@@ -1,0 +1,185 @@
+{
+  "timestamp": "2025-09-24T10:41:35.100701",
+  "benchmark_duration_seconds": 1.9397544860839844,
+  "system_info": {
+    "cpu": {
+      "cores": 16,
+      "cores_logical": 16,
+      "frequency": 3600.0,
+      "usage_percent": 8.6
+    },
+    "memory": {
+      "total_gb": 15.89181900024414,
+      "available_gb": 2.4917831420898438,
+      "usage_percent": 84.3
+    },
+    "gpu": {
+      "gpu_0": {
+        "name": "NVIDIA GeForce RTX 4060",
+        "memory_total_mb": 8188.0,
+        "memory_free_mb": 6356.0,
+        "memory_used_mb": 1602.0,
+        "temperature": 31.0,
+        "uuid": "GPU-b2976aac-a9ca-5abc-4919-07243af754ef"
+      }
+    },
+    "tensorflow": {
+      "gpu_count": 0,
+      "gpu_devices": [],
+      "cpu_devices": [
+        "/physical_device:CPU:0"
+      ]
+    }
+  },
+  "results": {
+    "ml_inference": {
+      "1": {
+        "avg_time_ms": 0.0018358230590820312,
+        "std_time_ms": 0.0006490067285926914,
+        "min_time_ms": 0.001430511474609375,
+        "max_time_ms": 0.003337860107421875,
+        "throughput": 544714.8051948051,
+        "gpu_available": false
+      },
+      "10": {
+        "avg_time_ms": 0.001430511474609375,
+        "std_time_ms": 0.0002132480599880018,
+        "min_time_ms": 0.0011920928955078125,
+        "max_time_ms": 0.0019073486328125,
+        "throughput": 6990506.666666667,
+        "gpu_available": false
+      },
+      "50": {
+        "avg_time_ms": 0.001239776611328125,
+        "std_time_ms": 0.00033378601074218755,
+        "min_time_ms": 0.0007152557373046875,
+        "max_time_ms": 0.0019073486328125,
+        "throughput": 40329846.15384615,
+        "gpu_available": false
+      },
+      "100": {
+        "avg_time_ms": 0.00133514404296875,
+        "std_time_ms": 0.0004156969970265077,
+        "min_time_ms": 0.00095367431640625,
+        "max_time_ms": 0.002384185791015625,
+        "throughput": 74898285.71428572,
+        "gpu_available": false
+      }
+    },
+    "ml_training": {
+      "training_time_seconds": 0.7803103923797607,
+      "final_accuracy": 0.38100001215934753,
+      "final_loss": 1.091349482536316,
+      "epochs": 5,
+      "samples": 1000,
+      "samples_per_second": 6407.706534256441
+    },
+    "batch_processing": {
+      "error": "cannot reuse already awaited coroutine"
+    },
+    "memory_usage": {
+      "system_memory_tests": [
+        {
+          "test": "small_allocations",
+          "memory_mb": 3.80859375,
+          "allocations": 100
+        },
+        {
+          "test": "large_allocations",
+          "memory_mb": 79.64453125,
+          "allocations": 10
+        }
+      ],
+      "gpu_memory": {
+        "gpu_0": {
+          "used_mb": 1552.0,
+          "free_mb": 6406.0,
+          "total_mb": 8188.0,
+          "utilization_percent": 18.95456765999023
+        }
+      },
+      "memory_efficiency_score": 0.599873046875
+    },
+    "hardware_specific": {
+      "cpu": {
+        "vectorization": {
+          "vectorized_time": 0.002360105514526367,
+          "loop_time": 0.12575316429138184,
+          "speedup": 53.2828568542277,
+          "results_match": "True"
+        },
+        "parallelization": {
+          "sequential_time": 0.008715629577636719,
+          "parallel_time": 0.011583089828491211,
+          "speedup": 0.7524442706296441,
+          "results_match": true
+        }
+      },
+      "gpu": {
+        "tensorflow_optimizations": {
+          "mixed_precision": "cpu_only",
+          "xla_compilation": {
+            "non_compiled_time": 0.0039327144622802734,
+            "compiled_time": 0.02229166030883789,
+            "speedup": 0.17642088600825687
+          }
+        }
+      },
+      "memory": {
+        "object_pooling": {
+          "pooled_objects_created": 1,
+          "non_pooled_objects_created": 1,
+          "memory_savings_percent": 0.0
+        }
+      }
+    },
+    "performance_scaling": {
+      "1": {
+        "total_time": 7.867813110351562e-05,
+        "avg_time_per_task": 7.867813110351562e-05,
+        "tasks_per_second": 12710.012121212121,
+        "success_rate": 1.0
+      },
+      "5": {
+        "total_time": 7.390975952148438e-05,
+        "avg_time_per_task": 1.4781951904296875e-05,
+        "tasks_per_second": 67650.06451612903,
+        "success_rate": 1.0
+      },
+      "10": {
+        "total_time": 9.012222290039062e-05,
+        "avg_time_per_task": 9.012222290039062e-06,
+        "tasks_per_second": 110960.42328042327,
+        "success_rate": 1.0
+      },
+      "20": {
+        "total_time": 0.00016617774963378906,
+        "avg_time_per_task": 8.308887481689453e-06,
+        "tasks_per_second": 120353.05595408895,
+        "success_rate": 1.0
+      },
+      "50": {
+        "total_time": 0.00023031234741210938,
+        "avg_time_per_task": 4.6062469482421876e-06,
+        "tasks_per_second": 217096.48033126295,
+        "success_rate": 1.0
+      }
+    },
+    "stress_test": {
+      "error": "'successful_operations'"
+    }
+  },
+  "summary": {
+    "overall_score": 72.50391579793215,
+    "performance_rating": "Fair",
+    "key_metrics": {
+      "ml_inference_score": 100,
+      "memory_efficiency_score": 59.9873046875,
+      "hardware_optimization_score": 57.52444270629644
+    }
+  },
+  "recommendations": [
+    "Enable GPU acceleration for ML inference if CUDA GPU is available",
+    "Implement memory pooling and object reuse to improve memory efficiency"
+  ]
+}

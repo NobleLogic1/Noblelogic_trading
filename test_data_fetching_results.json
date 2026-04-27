@@ -1,0 +1,90 @@
+{
+  "summary": {
+    "total_tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "success_rate": 1.0,
+    "duration_seconds": 0.0013802051544189453
+  },
+  "results": [
+    {
+      "test": "Valid data validation",
+      "passed": true,
+      "message": "Quality: excellent, Reason: Valid data",
+      "timestamp": "2025-09-24T10:02:42.139630"
+    },
+    {
+      "test": "Invalid data detection",
+      "passed": true,
+      "message": "Quality: invalid, Reason: Basic validation failed",
+      "timestamp": "2025-09-24T10:02:42.139691"
+    },
+    {
+      "test": "Stale data detection",
+      "passed": true,
+      "message": "Quality: poor, Reason: Stale data",
+      "timestamp": "2025-09-24T10:02:42.139740"
+    },
+    {
+      "test": "binance_us WebSocket URL",
+      "passed": true,
+      "message": "URL: wss://stream.binance.us:9443/ws/",
+      "timestamp": "2025-09-24T10:02:42.139839"
+    },
+    {
+      "test": "coinbase_pro WebSocket URL",
+      "passed": true,
+      "message": "URL: wss://ws-feed.pro.coinbase.com",
+      "timestamp": "2025-09-24T10:02:42.139873"
+    },
+    {
+      "test": "kraken WebSocket URL",
+      "passed": true,
+      "message": "URL: wss://ws.kraken.com",
+      "timestamp": "2025-09-24T10:02:42.139905"
+    },
+    {
+      "test": "Data aggregation",
+      "passed": true,
+      "message": "Aggregated price: 50000.0",
+      "timestamp": "2025-09-24T10:02:42.140043"
+    },
+    {
+      "test": "Best data selection",
+      "passed": true,
+      "message": "Selected: binance_us, Expected: binance_us",
+      "timestamp": "2025-09-24T10:02:42.140090"
+    },
+    {
+      "test": "Symbol subscription tracking",
+      "passed": true,
+      "message": "Subscribed symbols: ['ETH/USDT', 'BTC/USDT']",
+      "timestamp": "2025-09-24T10:02:42.140297"
+    },
+    {
+      "test": "Data callback execution",
+      "passed": true,
+      "message": "Callbacks received: 1",
+      "timestamp": "2025-09-24T10:02:42.140502"
+    },
+    {
+      "test": "Quality report generation",
+      "passed": true,
+      "message": "Report keys: ['exchange', 'symbol', 'total_messages', 'valid_messages', 'invalid_messages', 'duplicate_messages', 'stale_messages', 'avg_latency_ms', 'last_update', 'data_freshness_score']",
+      "timestamp": "2025-09-24T10:02:42.140623"
+    },
+    {
+      "test": "Exchange addition",
+      "passed": true,
+      "message": "Connections: 3 -> 4",
+      "timestamp": "2025-09-24T10:02:42.140784"
+    },
+    {
+      "test": "Exchange removal",
+      "passed": true,
+      "message": "Connections: 4 -> 3",
+      "timestamp": "2025-09-24T10:02:42.140876"
+    }
+  ],
+  "timestamp": "2025-09-24T10:02:42.141311"
+}
